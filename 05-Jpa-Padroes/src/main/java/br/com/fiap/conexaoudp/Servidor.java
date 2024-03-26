@@ -35,7 +35,7 @@ public class Servidor {
       
             	 int mensagemInt;
                  String intMensagem;
-                 mensagemInt= Integer.parseInt(mensagem);
+                 mensagemInt= Integer.parseInt(mensagem.trim());
                  //mensagemInt = Integer.valueOf(mensagem);
                  
                  Investimento investimento2 = new Investimento();
@@ -47,6 +47,7 @@ public class Servidor {
 
                  System.out.println("Endereço: " + datagram.getSocketAddress());
                  System.out.println("Mensagem: " + mensagemInt);
+                 System.out.println(busca.getNome());
                  
                  
 			
