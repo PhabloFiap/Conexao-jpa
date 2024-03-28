@@ -27,6 +27,7 @@ public class View {
 		//Instanciar um investimento (implementar um construtor na classe)
 		
 		Produto produto = new Produto( "TV Tranquila", "CAAALMA", 500);
+		Produto produto2 = new Produto( "Celular calminho", "TRANQUILO", 1900);
 		
 		Investimento investimento = new Investimento("CDB TranquiloCoin", 1000001.0, TipoInvestimento.CRIPTO);
 		
@@ -40,7 +41,7 @@ public class View {
 		}
 		
 		try {
-			daoProd.salvar(produto);
+			daoProd.salvar(produto2);
 			daoProd.commit();
 			System.out.println("Produto cadastrado!");
 		}catch(CommitException e) {
@@ -48,7 +49,7 @@ public class View {
 		}
 		
 		try {
-			Produto buscar = daoProd.buscar(1);
+			Produto buscar = daoProd.buscar(2);
 			System.out.print(buscar.getNome_produto());
 		} catch (Exception e) {
 			// TODO: handle exception
