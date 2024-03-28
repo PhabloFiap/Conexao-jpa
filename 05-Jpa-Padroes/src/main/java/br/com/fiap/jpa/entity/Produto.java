@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="TB_JAVA_PRODUTO")
-@SequenceGenerator(name="invs",
+@SequenceGenerator(name="invis",
 sequenceName ="Sq_JAVA_PRODUTO", allocationSize = 1)
 
 
@@ -20,7 +20,7 @@ public class Produto {
 
 	@Id
 	@Column(name="id_Produto")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "invs")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "invis")
 	private Integer id_produto;
 	
 	@Column (name="nm_produto", nullable =false, length = 40)
@@ -81,6 +81,13 @@ public class Produto {
 
 	public void setDescricao_produto(String descricao_produto) {
 		this.descricao_produto = descricao_produto;
+	}
+
+
+
+
+	public String mostrar() {
+		return "Nome: " + getNome_produto() + " \n Descricao: " + getDescricao_produto() + "\n Preco: " + getPreco();
 	}
 	
 	

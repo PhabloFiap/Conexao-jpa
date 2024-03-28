@@ -48,7 +48,7 @@ public class Servidor {
                  
                  ProdutoDao daoProd = new ProdutoDaoImpl(em);
                  Produto buscar = daoProd.buscar(mensagemInt);    
-                 System.out.println(buscar.getNome_produto());
+                 System.out.println(buscar.mostrar());
                  
                  
                  Investimento busca = dao.buscar(mensagemInt);
