@@ -8,7 +8,10 @@ import javax.persistence.EntityManager;
 import br.com.fiap.jpa.dao.GenericDaoImpl;
 import br.com.fiap.jpa.dao.InvestimentoDao;
 import br.com.fiap.jpa.dao.InvestimentoDaoImpl;
+import br.com.fiap.jpa.dao.ProdutoDao;
+import br.com.fiap.jpa.dao.ProdutoDaoImpl;
 import br.com.fiap.jpa.entity.Investimento;
+import br.com.fiap.jpa.entity.Produto;
 import br.com.fiap.jpa.entity.TipoInvestimento;
 import br.com.fiap.jpa.singleton.EntityManagerFactorySingleton;
 
@@ -42,12 +45,17 @@ public class Servidor {
                  EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
                  InvestimentoDao dao = new InvestimentoDaoImpl(em);
                  
+                 
+                 ProdutoDao daoProd = new ProdutoDaoImpl(em);
+                 Produto buscar = daoProd.buscar(mensagemInt);    
+                 System.out.println(buscar.getNome_produto());
+                 
+                 
                  Investimento busca = dao.buscar(mensagemInt);
                  System.out.println(mensagemInt);
 
                  System.out.println("Endereço: " + datagram.getSocketAddress());
                  System.out.println("Mensagem: " + mensagemInt);
-                 System.out.println(busca.getNome());
                  
                  
 			
