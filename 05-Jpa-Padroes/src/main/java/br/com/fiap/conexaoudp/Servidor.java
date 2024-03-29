@@ -2,14 +2,11 @@ package br.com.fiap.conexaoudp;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-
 import javax.persistence.EntityManager;
-
 import br.com.fiap.jpa.dao.GenericDaoImpl;
-import br.com.fiap.jpa.dao.InvestimentoDao;
-import br.com.fiap.jpa.dao.InvestimentoDaoImpl;
-import br.com.fiap.jpa.entity.Investimento;
-import br.com.fiap.jpa.entity.TipoInvestimento;
+import br.com.fiap.jpa.dao.ProdutoDao;
+import br.com.fiap.jpa.dao.ProdutoDaoImpl;
+import br.com.fiap.jpa.entity.Produto;
 import br.com.fiap.jpa.singleton.EntityManagerFactorySingleton;
 
 
@@ -35,18 +32,23 @@ public class Servidor {
       
             	 int mensagemInt;
                  String intMensagem;
-                 mensagemInt= Integer.parseInt(mensagem);
+                 mensagemInt= Integer.parseInt(mensagem.trim());
                  //mensagemInt = Integer.valueOf(mensagem);
                  
-                 Investimento investimento2 = new Investimento();
+        
                  EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
-                 InvestimentoDao dao = new InvestimentoDaoImpl(em);
+        
                  
-                 Investimento busca = dao.buscar(mensagemInt);
+                 
+                 ProdutoDao daoProd = new ProdutoDaoImpl(em);
+                 Produto buscar = daoProd.buscar(mensagemInt);    
+                 System.out.println(buscar.mostrar());
+                 
+                 
+   
                  System.out.println(mensagemInt);
-
                  System.out.println("Endereço: " + datagram.getSocketAddress());
-                 System.out.println("Mensagem: " + mensagemInt);
+ 
                  
                  
 			
